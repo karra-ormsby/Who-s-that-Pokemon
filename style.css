@@ -1,0 +1,30 @@
+:root {
+    --header-footer-color: #ee1515;
+    --background-color: #f0f0f0;
+    --box-color: #222224;
+}
+
+* {
+    margin: 0;
+}
+
+header {
+    background-color: var(--header-footer-color);
+    border-bottom: 2rem solid black;
+    height: 7rem;
+}
+
+main {
+    height: 100vh;
+}
+
+.guessing-field {
+    border: 1px solid black;
+    height: 30rem;
+}
+
+footer {
+        background-color: var(--header-footer-color);
+        border-top: 2rem solid black;
+        height: 7rem;
+}
