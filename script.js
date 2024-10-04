@@ -11,7 +11,7 @@ const gen1 = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "c
 //function to choose a random ny=umber from 1 to lengnth of array of possible words
 //TODO: change gen1 to choosenGen (where choosenGen will be equal to the array that the user picks)
 function chooseWord () {
-    myWord = gen1[Math.floor(Math.random() * gen1.length)];
+    const myWord = gen1[Math.floor(Math.random() * gen1.length)];
 };
 chooseWord();
 console.log(myWord);
@@ -31,16 +31,58 @@ renderBlanks();
 
 function checkWord() {
     const letter = event.key;
+    let correctGuess = false;
 
     for(let i = 0; i < myWord.length; i++) {
         if (myWord[i] === letter) {
+            correctGuess = true;
             blankArray[i] = letter;
-                guessingField.textContent =  blankArray.join(" ");
-        } else {
-            //TODO: this needs to call to a function that checks if we have had too many correct guesses
-            incorrectGuess ++;
+            guessingField.textContent =  blankArray.join(" ");
         }
     }
-}
+    if (!correctGuess) {
+        incorrectGuess ++;
+        wrongGuess();
+    }
+};
+
+function wrongGuess() {
+        switch (incorrectGuess) {
+            case 1:
+                console.log("head");
+                break;
+            case 2:
+                console.log("body");
+                break;
+            case 3:
+                console.log("left arm");
+                break;
+            case 4:
+                console.log("right atm");
+                break;
+            case 5:
+                console.log("left leg");
+                break;
+            case 6:
+                console.log("right lef");
+                break;
+            case 7:
+                console.log("noose");
+                break;
+            case 8:
+                console.log("top pole");
+                break;
+            case 9:
+                console.log("pole");
+                break;
+            case 10:
+                console.log("floor. You loose!");
+                break;
+        }
+};
+
+function init() {
+
+};
 
 document.addEventListener("keypress", checkWord);
