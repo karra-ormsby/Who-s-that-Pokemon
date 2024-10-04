@@ -23,6 +23,13 @@ main {
     height: 30rem;
 }
 
+.reset {
+    height: 2rem;
+    width: 8rem;
+    background-color: #222224;
+    color: #f0f0f0;
+}
+
 footer {
         background-color: var(--header-footer-color);
         border-top: 2rem solid black;
