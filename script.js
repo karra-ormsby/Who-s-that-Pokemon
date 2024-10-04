@@ -18,6 +18,7 @@ let blankArray = [];
 let blankWord;
 let myWord;
 let incorrectGuess;
+let gameCompeted;
 
 const gen1 = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran", "nidorina", "nidoqueen", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbrow", "magnemite", "magneton", "farfetchd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exegutor", "cubone", "marowak", "hitmonlee", "hitonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mrmime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
 
@@ -25,6 +26,7 @@ const gen1 = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "c
 function init() {
     incorrectGuess = 0;
     blankArray = [];
+    gameCompeted = false;
     chooseWord();
     renderBlanks();
 };
@@ -44,7 +46,7 @@ function renderBlanks() {
     };
 
     blankWord = blankArray.join(" ");
-    guess.textContent = blankWord;
+    guessingField.textContent = blankWord;
 }
 
 //function that checks the letter guessed by the uer against the selected word
@@ -52,29 +54,31 @@ function renderBlanks() {
 //the function then checks if the user has guessed all letters in the word
 //if the letter gusssed is incorrect it runs the wrongGuess function
 function checkWord() {
-    const letter = event.key;
-    let correctGuess = false;
+    if(!gameCompeted) {
+        const letter = event.key;
+        let correctGuess = false;
 
-    for(let i = 0; i < myWord.length; i++) {
-        if (myWord[i] === letter) {
-            correctGuess = true;
-            blankArray[i] = letter;
-            guessingField.textContent =  blankArray.join(" ");
+        for(let i = 0; i < myWord.length; i++) {
+            if (myWord[i] === letter) {
+                correctGuess = true;
+                blankArray[i] = letter;
+                guessingField.textContent =  blankArray.join(" ");
+            }
         }
-    }
-    if (!correctGuess) {
-        incorrectGuess ++;
-        wrongGuess();
-    } else {
-        const blankword = blankArray.join("");
-        if (blankword === myWord) {
-            gameWin();
+        if (!correctGuess) {
+            incorrectGuess ++;
+            wrongGuess();
+        } else {
+            const blankword = blankArray.join("");
+            if (blankword === myWord) {
+                gameWin();
+            }
         }
     }
 };
 
 //renders the parts to the hangman the corresponds to how many incorrect guesses have occured
-//if the user has reached the max numbr of incorrect guesses then the game is over
+//if the user has reached the max number of incorrect guesses then the game is over
 function wrongGuess() {
         switch (incorrectGuess) {
             case 1:
@@ -124,21 +128,23 @@ function wrongGuess() {
 //function that when the correct answer is reached, it renders a new page, tells the user the answeran offers to let the uer play again
 //TODO: game still take user. Will continue to run checkWord and either run gameWin or increment incorrectGuess and run gameOver when incorrectGuess reaches 10
 function gameWin() {
+    gameCompeted = true;
     guessingField.innerHTML = '';
     hangman.innerHTML = '';
     const winner = document.createElement("p");
     winner.textContent = "You're a winner!";
-    mainElement.appendChild(winner);
+    guessingField.appendChild(winner);
     renderReset();
 };
 
 //function that once max inccorect guesses is reached, it renders a new page, tells the user the answeran offers to let the uer play again
 function gameOver() {
+    gameCompeted = true;
     guessingField.innerHTML = "";
     hangman.innerHTML = '';
     const answer = document.createElement("p");
-    answer.textContent = `The correct answer was ${myWord}. Bettermewo luck next time.`;
-    mainElement.appendChild(answer);
+    answer.textContent = `The correct answer was ${myWord}. Better luck next time.`;
+    guessingField.appendChild(answer);
     renderReset();
 };
 
@@ -147,7 +153,7 @@ function renderReset() {
     const resetBtn = document.createElement("div");
     resetBtn.setAttribute("class", "reset");
     resetBtn.textContent = "Play Again?";
-    mainElement.appendChild(resetBtn);
+    guessingField.appendChild(resetBtn);
     const playAgain = document.querySelector(".reset");
     playAgain.addEventListener("click", init);
 };
