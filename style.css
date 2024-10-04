@@ -20,11 +20,8 @@ main {
 }
 
 .hangman {
-    margin: 20px;
-}
-
-.figure {
-    position: relative;
+    position: absolute;
+    left: 500px;
 }
 
 .head {
@@ -77,11 +74,6 @@ main {
     position: relative;
     top: 169px;
     left: 21px;
-}
-
-.stocks {
-    position: absolute;
-    left: 500px;
 }
 
 .top-rail {
