@@ -121,3 +121,9 @@ footer {
         border-top: 2rem solid black;
         height: 7rem;
 }
+
+.card {
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid black;
+}
