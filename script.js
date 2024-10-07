@@ -11,6 +11,7 @@ let incorrectGuess;
 let gameCompeted;
 let guessingField;
 let hangmanElements;
+const gameEnd = document.createElement("p");
 
 const gen1 = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran", "nidorina", "nidoqueen", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbrow", "magnemite", "magneton", "farfetchd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exegutor", "cubone", "marowak", "hitmonlee", "hitonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mrmime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
 
@@ -28,21 +29,22 @@ const gen4 = [
 
 
 //----------------------------creates and runs the landing page------------------------------//
+// adds an event listener to all cards
 
-//TODO: add comments to these functions
+function addListner() {
+    const genCards = document.querySelectorAll(".card");
+    for (let i = 0; i < genCards.length; i++) {
+        let gen = genCards[i];
+        let genId = gen.id;
 
-const genCards = document.querySelectorAll(".card");
-for (let i = 0; i < genCards.length; i++) {
-    let gen = genCards[i];
-    let genId = gen.id;
+        gen.addEventListener("click", function () {
+            getGen(genId);
+        });
 
-    gen.addEventListener("click", function () {
-    getGen(genId);
-});
-
+    };
 };
 
-//TODO: when going into startGame cannot get the cards to dissapear
+//depending on which card is clicked, the function passes that array to the startGame function
 function getGen(id) {
     switch(id) {
         case "gen1":
@@ -90,20 +92,22 @@ function createCards() {
     chooseGen.appendChild(gen4);
 
     document.querySelector("main").appendChild(chooseGen);
-
-    cardListener();
 };
 
 function init() {
     createCards();
+    addListner();
 };
 
+init();
 
 //----------------------------creates and runs the game page------------------------------//
 
 //funtion that is called when the page loads to 'set up' the game
 function startGame(userChoice) {
-    gameEnd.innerHTML = "";
+    chooseGen.innerHTML = "";
+    console.log(gameEnd);
+    console.log(gameEnd);
     incorrectGuess = 0;
     blankArray = [];
     gameCompeted = false;
@@ -191,28 +195,27 @@ function wrongGuess() {
                 break;
             case 10:
                 hangmanElements.floor.classList.remove("hidden");
-                gameOver()
+                gameLoss()
                 break;
         }
 };
 
-const gameEnd = document.createElement("p");
-
 //when the correct answer is reached, it renders a new page, tells the user the answeran offers to let the uer play again
 function gameWin() {
     gameCompeted = true;
-    guessingField.innerHTML = "";
-    hangmanElements.figureField = "";
+    clearGameBord();
+    gameEnd.innerHTML = "";
     gameEnd.textContent = "You're a winner!";
+    console.log(gameEnd);
     mainElement.appendChild(gameEnd);
     renderResetButton();
 };
 
 //once max inccorect guesses is reached, it renders a new page, tells the user the answeran offers to let the uer play again
-function gameOver() {
+function gameLoss() {
     gameCompeted = true;
-    guessingField.innerHTML = "";
-    hangmanElements.figureField.innerHTML = "";
+    clearGameBord();
+    gameEnd.innerHTML = "";
     gameEnd.textContent = `The correct answer was ${myWord}. Better luck next time.`;
     mainElement.appendChild(gameEnd);
     renderResetButton();
@@ -220,12 +223,24 @@ function gameOver() {
 
 //creates a reset button for the game and adds and event listerner to it
 function renderResetButton() {
+    console.log(gameEnd);
     const resetBtn = document.createElement("div");
     resetBtn.setAttribute("class", "reset");
     resetBtn.textContent = "Play Again?";
     gameEnd.appendChild(resetBtn);
     const playAgain = document.querySelector(".reset");
-    playAgain.addEventListener("click", init);
+    console.log(gameEnd);
+    playAgain.addEventListener("click", clearEndGame);
+};
+
+function clearGameBord() {
+    guessingField.innerHTML = "";
+    hangmanElements.figureField.innerHTML = "";
+};
+
+function clearEndGame() {
+    gameEnd.innerHTML = "";
+    init();
 };
 
 function createGuessingField() {
