@@ -1,24 +1,7 @@
-:root {
-    --header-footer-color: #ee1515;
-    --background-color: #f0f0f0;
-    --box-color: #222224;
-}
+/* ----------------------------------------Guessing Field---------------------------------------- */
 
-* {
-    margin: 0;
-}
 
-header {
-    background-color: var(--header-footer-color);
-    border-bottom: 2rem solid black;
-    height: 7rem;
-}
-
-main {
-    height: 100vh;
-    display: flex;
-}
-
+/* ----------------------------------------Hangman---------------------------------------- */
 .hangman {
     position: absolute;
     left: 500px;
@@ -107,23 +90,4 @@ main {
 
 .hidden {
     display: none;
-}
-
-.reset {
-    height: 2rem;
-    width: 8rem;
-    background-color: #222224;
-    color: #f0f0f0;
-}
-
-footer {
-        background-color: var(--header-footer-color);
-        border-top: 2rem solid black;
-        height: 7rem;
-}
-
-.card {
-    height: 5rem;
-    width: 5rem;
-    border: 1px solid black;
 }

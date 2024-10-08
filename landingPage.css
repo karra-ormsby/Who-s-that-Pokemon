@@ -1,0 +1,35 @@
+h2 {
+    margin-top: 2rem;
+}
+
+#choose-gen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 8rem 5rem;
+}
+
+.card {
+    width: 15rem;
+    height: 10rem;
+    border: 1px solid #ccc;
+    box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;
+    overflow: hidden;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.card:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+h2,
+.card p {
+    font-family: "Press Start 2P", system-ui;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 9rem;
+}

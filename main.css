@@ -1,0 +1,52 @@
+/* ----------------------------------------CSS for all pages---------------------------------------- */
+:root {
+    --header-footer-color: #ee1515;
+    --background-color: #f0f0f0;
+    --box-color: #222224;
+}
+
+* {
+    margin: 0;
+}
+
+/*make sure the body is at least the height of the viewport */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*make the main section expand to fill the remaining space */
+main {
+    flex-grow: 1;
+}
+
+header {
+    background-color: var(--header-footer-color);
+    border-bottom: 2rem solid black;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+}
+
+#heading {
+    width: 40rem;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+footer {
+    background-color: var(--header-footer-color);
+    border-top: 2rem solid black;
+    height: 6rem;
+}
+
+/* ----------------------------------------Cards---------------------------------------- */
+
+.reset {
+    height: 2rem;
+    width: 8rem;
+    background-color: #222224;
+    color: #f0f0f0;
+}
