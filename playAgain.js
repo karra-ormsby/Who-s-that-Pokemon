@@ -1,9 +1,8 @@
 const playAgainBtn = document.querySelector("#play-again");
 const myWord = localStorage.getItem("myWord");
 
-if (myWord) {
+if (myWord && myWord.length > 0) {
     const answer = document.querySelector("#answer");
-
     answer.textContent = myWord;
 }
 

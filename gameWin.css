@@ -1,0 +1,28 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#play-again {
+    align-content: center;
+    border: 3px solid black;
+    box-shadow: rgba(0, 0, 0, 0.5) 1.95px 1.95px 2.6px;
+    font-family: "Press Start 2P", system-ui;
+    margin-top: 2rem;
+    text-align: center;
+    width: 15rem;
+    height: 3rem;
+}
+
+#play-again:hover {
+    cursor: pointer;
+    background-color: rgba(218, 223, 225, 0.8);
+}

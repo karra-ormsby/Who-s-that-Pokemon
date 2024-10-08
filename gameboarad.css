@@ -1,93 +1,106 @@
-/* ----------------------------------------Guessing Field---------------------------------------- */
-
-
 /* ----------------------------------------Hangman---------------------------------------- */
-.hangman {
-    position: absolute;
-    left: 500px;
-}
-
-.head {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid black;
-    position: absolute;
-    top: 30px;
-    left: -5px;
-}
-
-.body {
-    border-left: 2px solid black;
-    height: 90px;
-    position: absolute;
-    top: 82px;
-    left: 22px;
-}
-
-.arm-left {
-    border-top: 2px solid black;
-    width: 35px;
-    position: absolute;
-    top: 110px;
-    left: -13px;
-}
-
-.arm-right {
-    border-top: 2px solid black;
-    width: 35px;
+#hangman {
     position: relative;
-    top: 110px;
-    left: 24px;
+    max-width: 25vw;
+    margin: 0 auto;
+    left: 23vw;
+    top: -13vw;
 }
 
-.leg-left {
-    border-top: 2px solid black;
-    width: 35px;
+#body, #noose, #pole {
+    border-left: 2px solid rgba(218, 223, 225, 0.8);
+}
+
+#arm-left, #arm-right, #leg-left, #leg-right, #top-rail, #floor {
+    border-top: 2px solid rgba(218, 223, 225, 0.8);
+}
+#head {
+    border: 2px solid rgba(218, 223, 225, 0.8);
+}
+
+#head {
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    position: absolute;
+}
+
+#body {
+    height: 10vw;
+    position: absolute;
+    top: 7vw;
+    left: 3.5vw;
+}
+
+#arm-left {
+    width: 5vw;
+    position: absolute;
+    top: 10vw;
+    left: -1.5vw;
+}
+
+#arm-right {
+    width: 5vw;
+    position: relative;
+    top: 10vw;
+    left: 3.4vw;
+}
+
+#leg-left, #leg-left-silhouette {
+    width: 5vw;
     rotate: -30deg;
     position: relative;
-    top: 170px;
-    left: -9px;
+    top: 17.7vw;
+    left: -1.2vw;
 }
 
-.leg-right {
-    border-top: 2px solid black;
-    width: 35px;
+#leg-right {
+    width: 5vw;
     rotate: 30deg;
     position: relative;
-    top: 169px;
-    left: 21px;
+    top: 17.6vw;
+    left: 3.3vw;
 }
 
-.top-rail {
-    border-top: 2px solid black;
-    width: 155px;
+#top-rail {
+    width: 15vw;
     position: absolute;
-    left: 22px;
+    left: 3.3vw;
+    top: -3vw;
 }
 
-.noose {
-    border-left: 2px solid black;
-    height: 30px;
+#noose {
+    height: 3vw;
     position: absolute;
-    left: 22px;
+    left: 3.5vw;
+    top: -3vw;
 }
 
-.pole {
-    border-left: 2px solid black;
-    height: 225px;
+#pole {
+    height: 25vw;
     position: absolute;
-    top: 1px;
-    left: 176px;
+    top: -3vw;
+    left: 18vw;
 }
 
-.floor {
-    border-top: 2px solid black;
-    width: 200px;
+#floor {
+    width: 22vw;
     position: absolute;
-    top: 226px;
+    left: -3vw;
+    top: 22vw;
 }
 
-.hidden {
-    display: none;
+#game-board {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 5rem;
 }
+
+#guessing-field {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 3.5vw;
+    margin-top: 10rem;
+}
+

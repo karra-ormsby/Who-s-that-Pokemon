@@ -1,16 +1,16 @@
 const userChoice = JSON.parse(localStorage.getItem("userChoice"));
-const guessingField = document.querySelector(".guessing-field");
-const hangMan = document.querySelector(".hangman");
-const topRail = document.querySelector(".top-rail");
-const noose = document.querySelector(".noose");
-const pole = document.querySelector(".pole");
-const floor = document.querySelector(".floor");
-const head = document.querySelector(".head");
-const body = document.querySelector(".body");
-const armLeft = document.querySelector(".arm-left");
-const armRight = document.querySelector(".arm-right");
-const legLeft = document.querySelector(".leg-left");
-const legRight = document.querySelector(".leg-right");
+const guessingField = document.querySelector("#guessing-field");
+const hangMan = document.querySelector("#hangman");
+const topRail = document.querySelector("#top-rail");
+const noose = document.querySelector("#noose");
+const pole = document.querySelector("#pole");
+const floor = document.querySelector("#floor");
+const head = document.querySelector("#head");
+const body = document.querySelector("#body");
+const armLeft = document.querySelector("#arm-left");
+const armRight = document.querySelector("#arm-right");
+const legLeft = document.querySelector("#leg-left");
+const legRight = document.querySelector("#leg-right");
 
 let blankArray = [];
 let blankWord;
@@ -77,34 +77,34 @@ function checkWord() {
 function wrongGuess() {
         switch (incorrectGuess) {
             case 1:
-                head.classList.remove("hidden"); 
+                head.style.borderColor = 'black';
                 break;
             case 2:
-                body.classList.remove("hidden");
+                body.style.borderColor = 'black';
                 break;
             case 3:
-                armLeft.classList.remove("hidden");
+                armLeft.style.borderColor = 'black';
                 break;
             case 4:
-                armRight.classList.remove("hidden");
+                armRight.style.borderColor = 'black';
                 break;
             case 5:
-                legLeft.classList.remove("hidden");
+                legLeft.style.borderColor = 'black';
                 break;
             case 6:
-                legRight.classList.remove("hidden");
+                legRight.style.borderColor = 'black';
                 break;
             case 7:
-                noose.classList.remove("hidden");
+                noose.style.borderColor = 'black';
                 break;
             case 8:
-                topRail.classList.remove("hidden");
+                topRail.style.borderColor = 'black';
                 break;
             case 9:
-                pole.classList.remove("hidden");
+                pole.style.borderColor = 'black';
                 break;
             case 10:
-                floor.classList.remove("hidden");
+                floor.style.borderColor = 'black';
                 gameLoss()
                 break;
         }
