@@ -159,7 +159,7 @@
     }
 
     #hangman-container {
-        margin-bottom: 16rem;
+        margin-bottom: 8rem;
         max-width: 100%;
         transform: scale(1);
         transform-origin: center;
@@ -167,6 +167,29 @@
 
     #guessing-field {
         font-size: 2rem;
+        padding-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 499px) {
+    #game-board {
+        grid-template-areas:
+            "hangman-container"
+            "guessing-field";
+        grid-template-columns: 1fr;
+    }
+
+    #hangman-container {
+        margin-bottom: 10rem;
+        max-width: 100%;
+        transform: scale(0.8);
+        transform-origin: center;
+    }
+
+    #guessing-field {
+        font-size: 1.2rem;
         padding-top: 5rem;
         display: flex;
         justify-content: center;
