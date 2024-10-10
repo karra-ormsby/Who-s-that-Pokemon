@@ -155,7 +155,6 @@
 // document.addEventListener("input", checkWordTouchScreen);
 
 // startGame(userChoice);
-
 const userChoice = JSON.parse(localStorage.getItem("userChoice"));
 const guessingField = document.querySelector("#guessing-field");
 const hangMan = document.querySelector("#hangman");
@@ -169,34 +168,31 @@ const armLeft = document.querySelector("#arm-left");
 const armRight = document.querySelector("#arm-right");
 const legLeft = document.querySelector("#leg-left");
 const legRight = document.querySelector("#leg-right");
-const userInput = document.querySelector("#user-input"); // Added input field
+
+const userInput = document.getElementById("user-input");  // The hidden input field
 
 let blankArray = [];
 let blankWord;
 let myWord;
 let incorrectGuess;
-let gameCompeted;
+let gameCompleted;
 
 // Function that is called when the page loads to 'set up' the game
 function startGame(userChoice) {
     incorrectGuess = 0;
     blankArray = [];
-    gameCompeted = false;
+    gameCompleted = false;
     chooseWord(userChoice);
     renderBlanks();
-    // Focus the input field to show the keyboard, delayed by 100ms to ensure it works
-    setTimeout(() => {
-        userInput.focus();
-    }, 100);
 };
 
-// Chooses a random word from the array of possible words
+// Chooses a random word from the userChoice array
 function chooseWord(userChoice) {
     myWord = userChoice[Math.floor(Math.random() * userChoice.length)];
     console.log(myWord);
 };
 
-// Turn myWord into an array of blanks and display it as the 'word' to the user
+// Turn myWord into an array of blanks that will be displayed as the 'word' to the user
 function renderBlanks() {
     for (let i = 0; i < myWord.length; i++) {
         blankArray[i] = "_";
@@ -206,8 +202,9 @@ function renderBlanks() {
 };
 
 // Checks the letter guessed by the user against the selected word
-function checkWord(letter) {
-    if (!gameCompeted) {
+function checkWordPC(event) {
+    if (!gameCompleted) {
+        const letter = event.key;
         let correctGuess = false;
 
         for (let i = 0; i < myWord.length; i++) {
@@ -222,28 +219,43 @@ function checkWord(letter) {
             incorrectGuess++;
             wrongGuess();
         } else {
-            const blankword = blankArray.join("");
-            if (blankword === myWord) {
+            const blankWord = blankArray.join("");
+            if (blankWord === myWord) {
                 gameWin();
             }
         }
     }
 }
 
-// Handles keypress for PC
-function checkWordPC(event) {
-    const letter = event.key;
-    checkWord(letter);
-}
-
-// Handles input on touchscreen (virtual keyboard)
+// This handles the word check for touchscreens (when the user types using a virtual keyboard)
 function checkWordTouchScreen() {
-    const letter = userInput.value.slice(-1);  // Get the last letter typed
-    checkWord(letter);
-    userInput.value = "";  // Clear input after every letter
+    const guess = userInput.value.trim();  // Capture input value
+    if (!gameCompleted && guess.length === 1) {
+        let correctGuess = false;
+
+        for (let i = 0; i < myWord.length; i++) {
+            if (myWord[i] === guess) {
+                correctGuess = true;
+                blankArray[i] = guess;
+                guessingField.textContent = blankArray.join(" ");
+            }
+        }
+
+        if (!correctGuess) {
+            incorrectGuess++;
+            wrongGuess();
+        } else {
+            const blankWord = blankArray.join("");
+            if (blankWord === myWord) {
+                gameWin();
+            }
+        }
+        // Clear the input after processing the guess
+        userInput.value = '';
+    }
 }
 
-// Renders hangman parts based on incorrect guesses
+// Renders the parts of the hangman corresponding to incorrect guesses
 function wrongGuess() {
     switch (incorrectGuess) {
         case 1:
@@ -280,21 +292,32 @@ function wrongGuess() {
     }
 }
 
-// When the user guesses the word correctly
+// Function called when the user wins the game
 function gameWin() {
-    gameCompeted = true;
+    gameCompleted = true;
     location.replace("./gameWin.html");
 }
 
-// When the user loses the game
+// Function called when the user loses the game
 function gameLoss() {
-    gameCompeted = true;
+    gameCompleted = true;
     localStorage.setItem("myWord", myWord);
     location.replace("./gameLoss.html");
 }
 
-// Add event listeners for both PC and touchscreen devices
-document.addEventListener("keypress", checkWordPC);
-userInput.addEventListener("input", checkWordTouchScreen);  // Trigger for virtual keyboard
+// Event listener for tapping the guessingField to bring up the keyboard
+guessingField.addEventListener("click", function() {
+    // Focus on the hidden input field to bring up the virtual keyboard on mobile
+    userInput.focus();
+});
 
+// Event listener to capture user input from the virtual keyboard (touchscreen)
+userInput.addEventListener("input", function() {
+    checkWordTouchScreen();  // Call function to process the guess
+});
+
+// Event listener for physical keyboard input (PC)
+document.addEventListener("keypress", checkWordPC);
+
+// Start the game
 startGame(userChoice);
