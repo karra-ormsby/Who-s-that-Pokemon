@@ -43,7 +43,7 @@ h2,
 }
 
 /**********Tablets********/
-@media (min-width: 500px) and (max-width: 959px) {
+@media (max-width: 959px) {
     #choose-gen {
         grid-template-columns: 1fr;
     }
