@@ -184,7 +184,10 @@ function startGame(userChoice) {
     gameCompeted = false;
     chooseWord(userChoice);
     renderBlanks();
-    userInput.focus();  // Focus the input field to show the keyboard
+    // Focus the input field to show the keyboard, delayed by 100ms to ensure it works
+    setTimeout(() => {
+        userInput.focus();
+    }, 100);
 };
 
 // Chooses a random word from the array of possible words
