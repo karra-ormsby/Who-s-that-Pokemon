@@ -1,10 +1,56 @@
-/* ----------------------------------------Hangman---------------------------------------- */
+ #game-container {
+    display: grid;
+    grid-template-areas:
+        "guessing-field hangman-container";
+    grid-template-columns: 1fr auto;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+}
+
+#game-board {
+    display: grid;
+    grid-template-areas: "guessing-field hangman-container";
+    width: 90%;
+    max-width: 1200px;
+}
+
+#guessing-field {
+    grid-area: guessing-field;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+
+#hangman-container {
+    grid-area: hangman-container;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    max-width: 30vw;
+    min-width: 150px;
+}
+
+#hangman-container {
+    grid-area: hangman-container;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    max-width: 30vw;
+    min-width: 150px;
+    margin-left: 2rem;
+    transform: scale(1.5);
+    transform-origin: center;
+}
+
 #hangman {
     position: relative;
-    max-width: 25vw;
-    margin: 0 auto;
-    left: 23vw;
-    top: -13vw;
+    max-width: 100%;
+    top: -100px;
+    left: -80px;
 }
 
 #body, #noose, #pole {
@@ -14,93 +60,115 @@
 #arm-left, #arm-right, #leg-left, #leg-right, #top-rail, #floor {
     border-top: 4px solid rgba(218, 223, 225, 0.8);
 }
+
 #head {
     border: 4px solid rgba(218, 223, 225, 0.8);
 }
 
 #head {
-    width: 7vw;
-    height: 7vw;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     position: absolute;
+    top: 30px;
+    left: -5px;
 }
 
 #body {
-    height: 10vw;
+    height: 100px;
     position: absolute;
-    top: 7vw;
-    left: 3.5vw;
+    top: 109px;
+    left: 35px;
 }
 
 #arm-left {
-    width: 5vw;
+    width: 45px;
     position: absolute;
-    top: 10vw;
-    left: -1.5vw;
+    top: 130px;
+    left: -8px;
 }
 
 #arm-right {
-    width: 5vw;
+    width: 45px;
     position: relative;
-    top: 10vw;
-    left: 3.4vw;
+    top: 130px;
+    left: 35px;
 }
 
-#leg-left, #leg-left-silhouette {
-    width: 5vw;
-    rotate: -30deg;
+#leg-left {
+    width: 45px;
+    transform: rotate(-30deg);
     position: relative;
-    top: 17.7vw;
-    left: -1.2vw;
+    top: 212px;
+    left: -6px;
 }
 
 #leg-right {
-    width: 5vw;
-    rotate: 30deg;
+    width: 45px;
+    transform: rotate(30deg);
     position: relative;
-    top: 17.6vw;
-    left: 3.3vw;
+    top: 208px;
+    left: 33px;
 }
 
 #top-rail {
-    width: 15vw;
+    width: 200px;
     position: absolute;
-    left: 3.3vw;
-    top: -3vw;
+    top: -16px;
+    left: 39px;
 }
 
 #noose {
-    height: 3vw;
+    height: 50px;
     position: absolute;
-    left: 3.5vw;
-    top: -3vw;
+    top: -16px;
+    left: 35px;
 }
 
 #pole {
-    height: 25vw;
+    height: 280px;
     position: absolute;
-    top: -3vw;
-    left: 18vw;
+    top: -13px;
+    left: 235px;
 }
 
 #floor {
-    width: 22vw;
+    width: 260px;
     position: absolute;
-    left: -3vw;
-    top: 22vw;
+    top: 260px;
+    left: -25px;
 }
 
-#game-board {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin: 5rem;
+@media (min-width: 960px) and (max-width: 1200px) {
+    #hangman-container {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+
+    #guessing-field {
+        font-size: 2.1rem;
+    }
 }
 
-#guessing-field {
-    font-family: "Press Start 2P", system-ui;
-    font-size: 3.5vw;
-    margin-top: 10rem;
-}
+@media (max-width: 959px) {
+    #game-board {
+        grid-template-areas:
+        "hangman-container"
+        "guessing-field";
+        grid-template-columns: 1fr;
+    }
 
+    #hangman-container {
+        margin-bottom: 10rem;
+        max-width: 100%;
+        transform: scale(1);
+        transform-origin: center;
+    }
+
+    #guessing-field {
+        font-size: 2rem;
+        padding-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -5,7 +5,6 @@ h2 {
 #choose-gen {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 5rem 3rem;
     justify-items: center;
     align-items: center;
 }
