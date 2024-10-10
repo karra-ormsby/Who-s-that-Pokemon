@@ -48,7 +48,7 @@ function renderBlanks() {
 //if the correct letter is gussed it will replace the '_' at it's loaction and be rendered to the document
 //the function then checks if the user has guessed all letters in the word
 //if the letter gusssed is incorrect it runs the wrongGuess function
-function checkWord() {
+function checkWordPC() {
     if(!gameCompeted) {
         const letter = event.key;
         let correctGuess = false;
@@ -124,6 +124,34 @@ function gameLoss() {
     location.replace("./gameLoss.html");
 };
 
-document.addEventListener("keypress", checkWord);
+function checkWordTouchScreen() {
+    const inputValue = userInput.value;
+    console.log("Current input: ", inputValue);
+    if(!gameCompeted) {
+        const letter = event.key;
+        let correctGuess = false;
+
+        for(let i = 0; i < myWord.length; i++) {
+            if (myWord[i] === letter) {
+                correctGuess = true;
+                blankArray[i] = letter;
+                guessingField.textContent =  blankArray.join(" ");
+            }
+        }
+        if (!correctGuess) {
+            incorrectGuess ++;
+            wrongGuess();
+        } else {
+            const blankword = blankArray.join("");
+            if (blankword === myWord) {
+                gameWin();
+            }
+        }
+    }
+}
+
+
+document.addEventListener("keypress", checkWordPC);
+document.addEventListener("input", checkWordTouchScreen);
 
 startGame(userChoice);

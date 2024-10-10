@@ -50,3 +50,17 @@ footer {
     background-color: #222224;
     color: #f0f0f0;
 }
+
+/**********Laptops********/
+@media (min-width: 960px) and (max-width: 1200px) {
+    #heading {
+        width: 30rem;
+    }
+}
+
+/**********Tablets********/
+@media (min-width: 500px) and (max-width: 959px) {
+    #heading {
+        width: 20rem;
+    }
+}
