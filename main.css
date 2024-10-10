@@ -9,14 +9,12 @@
     margin: 0;
 }
 
-/*make sure the body is at least the height of the viewport */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/*make the main section expand to fill the remaining space */
 main {
     flex-grow: 1;
 }
@@ -42,8 +40,6 @@ footer {
     height: 6rem;
 }
 
-/* ----------------------------------------Cards---------------------------------------- */
-
 .reset {
     height: 2rem;
     width: 8rem;
@@ -59,8 +55,14 @@ footer {
 }
 
 /**********Tablets********/
-@media (max-width: 959px) {
+@media (min-width: 500px) and (max-width: 959px) {
     #heading {
         width: 20rem;
+    }
+}
+
+@media (max-width: 499px) {
+    #heading {
+        width: 15rem;
     }
 }

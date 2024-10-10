@@ -43,8 +43,23 @@ h2,
 }
 
 /**********Tablets********/
-@media (max-width: 959px) {
+@media (min-width: 500px) and (max-width: 959px) {
     #choose-gen {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 40%;
+        height: auto;
+    }
+}
+
+@media (max-width: 499px) {
+    #choose-gen {
+            display: grid;
+            grid-template-columns: 1fr;
     }
 }
