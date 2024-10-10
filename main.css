@@ -59,7 +59,7 @@ footer {
 }
 
 /**********Tablets********/
-@media (min-width: 500px) and (max-width: 959px) {
+@media (max-width: 959px) {
     #heading {
         width: 20rem;
     }
