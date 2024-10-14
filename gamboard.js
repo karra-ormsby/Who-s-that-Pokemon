@@ -11,12 +11,35 @@ const armLeft = document.querySelector("#arm-left");
 const armRight = document.querySelector("#arm-right");
 const legLeft = document.querySelector("#leg-left");
 const legRight = document.querySelector("#leg-right");
+const keyboardDiv = document.querySelector('#keyboard');
+// const textInput = document.querySelector('#textInput');
 
 let blankArray = [];
 let blankWord;
 let myWord;
 let incorrectGuess;
 let gameCompeted;
+
+const rows = [
+        ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+        ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+        ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+        ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+    ];
+
+// adds and event listener to each key on the keyboard    
+rows.forEach(row => {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+        row.forEach(key => {
+            const keyDiv = document.createElement('div');
+            keyDiv.classList.add('key');
+            keyDiv.textContent = key;
+            keyDiv.addEventListener('click', () => checkWord());
+            rowDiv.appendChild(keyDiv);
+        });
+        keyboardDiv.appendChild(rowDiv);
+    });
 
 //funtion that is called when the page loads to 'set up' the game
 function startGame(userChoice) {
@@ -29,8 +52,13 @@ function startGame(userChoice) {
 
 //chooses a random number from 1 to lengnth of array of possible words
 function chooseWord (userChoice) {
-    myWord = userChoice[Math.floor(Math.random() * userChoice.length)];
+    const randomNum = Math.floor(Math.random() * userChoice.length);
+    console.log(userChoice.length);
+    myWord = userChoice[randomNum];
+    console.log(randomNum);
     console.log(myWord);
+    localStorage.setItem("pokedexNum", randomNum + 1);
+
 };
 
 //turn myWord into an array of blanks that will be displayed as the 'word' to the user
@@ -44,13 +72,21 @@ function renderBlanks() {
     guessingField.textContent = blankWord;
 };
 
-//checks the letter guessed by the uer against the selected word
+//checks the letter guessed by the user against the selected word
 //if the correct letter is gussed it will replace the '_' at it's loaction and be rendered to the document
 //the function then checks if the user has guessed all letters in the word
 //if the letter gusssed is incorrect it runs the wrongGuess function
 function checkWord() {
     if(!gameCompeted) {
-        const letter = event.key;
+        let letter = "";
+        //when a key on a keyboard is pressed
+        if(event.key) {
+            letter = event.key;
+        } else {
+            //when a key on the touch screen keyboard is pressed
+            letter = event.target.innerText;
+        };
+        
         let correctGuess = false;
 
         for(let i = 0; i < myWord.length; i++) {
