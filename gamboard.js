@@ -56,38 +56,13 @@ function startGame(userChoice) {
 function chooseWord (userChoice) {
     const randomNum = Math.floor(Math.random() * userChoice.length);
     console.log(id);
-    myWord = userChoice[randomNum];
+    console.log(userChoice)
+    myWord = userChoice[randomNum].pokemon;
     console.log("random num:", randomNum);
     console.log("my word: ", myWord);
-    let pokedexNum;
-     switch (id) {
-            case "gen1":
-                pokedexNum = 1 + randomNum;
-                console.log("random num:", randomNum);
-                console.log("pokedexNum:", pokedexNum);
-                console.log("gen: ", id);
-                break;
-            case "gen2":
-                pokedexNum = 152 + randomNum;
-                console.log("random num:", randomNum);
-                console.log("pokedexNum:", pokedexNum);
-                console.log("gen: ", id);
-                break;
-            case "gen3":
-                pokedexNum = 252 + randomNum;
-                console.log("random num:", randomNum);
-                console.log("pokedexNum:", pokedexNum);
-                console.log("gen: ", id);
-                break;
-            case "gen4":
-                pokedexNum = 387 + randomNum;
-                console.log("random num:", randomNum);
-                console.log("pokedexNum:", pokedexNum);
-                console.log("gen: ", id);
-                break;
-        };
+    const pokedexNum = userChoice[randomNum].pokedexNumber;
+    console.log("pokedexNum:", pokedexNum);
     localStorage.setItem("pokedexNum", pokedexNum);
-
 };
 
 //turn myWord into an array of blanks that will be displayed as the 'word' to the user
