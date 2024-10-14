@@ -6,7 +6,7 @@ const pokemonCry = document.querySelector("#pokemon-cry");
 const audioElement = document.querySelector("audio");
 
 pokemonSprite.setAttribute("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedexNum}.png`);
-// pokemonCry.setAttribute("src", `https://veekun.com/dex/media/pokemon/cries/${pokedexNum}.ogg`);
+pokemonCry.setAttribute("src", `https://veekun.com/dex/media/pokemon/cries/${pokedexNum}.ogg`);
 
 // Load and play the audio
 audioElement.load();

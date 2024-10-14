@@ -13,11 +13,13 @@ const armRight = document.querySelector("#arm-right");
 const legLeft = document.querySelector("#leg-left");
 const legRight = document.querySelector("#leg-right");
 const keyboardDiv = document.querySelector('#keyboard');
+const wrongLetters = document.querySelector("#wrong-letters");
 
 let blankArray = [];
 let blankWord;
 let myWord;
 let incorrectGuess;
+let incorrectGuessArray = [];
 let gameCompeted;
 
 const rows = [
@@ -63,21 +65,25 @@ function chooseWord (userChoice) {
                 pokedexNum = 1 + randomNum;
                 console.log("random num:", randomNum);
                 console.log("pokedexNum:", pokedexNum);
+                console.log("gen: ", id);
                 break;
             case "gen2":
                 pokedexNum = 152 + randomNum;
                 console.log("random num:", randomNum);
                 console.log("pokedexNum:", pokedexNum);
+                console.log("gen: ", id);
                 break;
             case "gen3":
                 pokedexNum = 252 + randomNum;
                 console.log("random num:", randomNum);
                 console.log("pokedexNum:", pokedexNum);
+                console.log("gen: ", id);
                 break;
             case "gen4":
                 pokedexNum = 387 + randomNum;
                 console.log("random num:", randomNum);
                 console.log("pokedexNum:", pokedexNum);
+                console.log("gen: ", id);
                 break;
         };
     localStorage.setItem("pokedexNum", pokedexNum);
@@ -119,9 +125,15 @@ function checkWord() {
                 guessingField.textContent =  blankArray.join(" ");
             }
         }
+        //checks if the incorrectly guessed letter has been guessed before. If it hasn't it will be added to the incorrectGuessArray and the incorrect guesses will be incremented
         if (!correctGuess) {
-            incorrectGuess ++;
-            wrongGuess();
+            if (!incorrectGuessArray.includes(letter)) {
+                incorrectGuessArray.push(letter);
+                console.log(incorrectGuessArray);
+                wrongLetters.textContent = incorrectGuessArray.join(" ");
+                incorrectGuess ++;
+                wrongGuess();
+            }
         } else {
             const blankword = blankArray.join("");
             if (blankword === myWord) {
