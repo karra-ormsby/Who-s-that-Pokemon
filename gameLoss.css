@@ -7,7 +7,7 @@ main {
 
 h1 {
     font-family: "Press Start 2P", system-ui;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
     text-align: center;
 }
 
@@ -29,4 +29,9 @@ h1 {
 #play-again:hover {
     cursor: pointer;
     background-color: rgba(218, 223, 225, 0.8);
+}
+
+img {
+    width: 8rem;
+    height: auto;
 }
