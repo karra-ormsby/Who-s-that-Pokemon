@@ -1,4 +1,5 @@
 const userChoice = JSON.parse(localStorage.getItem("userChoice"));
+const id = localStorage.getItem("id");
 const guessingField = document.querySelector("#guessing-field");
 const hangMan = document.querySelector("#hangman");
 const topRail = document.querySelector("#top-rail");
@@ -12,7 +13,6 @@ const armRight = document.querySelector("#arm-right");
 const legLeft = document.querySelector("#leg-left");
 const legRight = document.querySelector("#leg-right");
 const keyboardDiv = document.querySelector('#keyboard');
-// const textInput = document.querySelector('#textInput');
 
 let blankArray = [];
 let blankWord;
@@ -53,11 +53,34 @@ function startGame(userChoice) {
 //chooses a random number from 1 to lengnth of array of possible words
 function chooseWord (userChoice) {
     const randomNum = Math.floor(Math.random() * userChoice.length);
-    console.log(userChoice.length);
+    console.log(id);
     myWord = userChoice[randomNum];
-    console.log(randomNum);
-    console.log(myWord);
-    localStorage.setItem("pokedexNum", randomNum + 1);
+    console.log("random num:", randomNum);
+    console.log("my word: ", myWord);
+    let pokedexNum;
+     switch (id) {
+            case "gen1":
+                pokedexNum = 1 + randomNum;
+                console.log("random num:", randomNum);
+                console.log("pokedexNum:", pokedexNum);
+                break;
+            case "gen2":
+                pokedexNum = 152 + randomNum;
+                console.log("random num:", randomNum);
+                console.log("pokedexNum:", pokedexNum);
+                break;
+            case "gen3":
+                pokedexNum = 252 + randomNum;
+                console.log("random num:", randomNum);
+                console.log("pokedexNum:", pokedexNum);
+                break;
+            case "gen4":
+                pokedexNum = 387 + randomNum;
+                console.log("random num:", randomNum);
+                console.log("pokedexNum:", pokedexNum);
+                break;
+        };
+    localStorage.setItem("pokedexNum", pokedexNum);
 
 };
 
