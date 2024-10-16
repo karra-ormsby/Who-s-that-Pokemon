@@ -27,7 +27,30 @@ h1 {
     background-color: rgba(218, 223, 225, 0.8);
 }
 
-img {
-    width: 8rem;
+#pokemon-sprite {
+    width: 12rem;
     height: auto;
+    animation: jiggle 2s 2;
+}
+
+@keyframes jiggle {
+    0% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    50% {
+        transform: rotate(0);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
 }
