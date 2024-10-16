@@ -1,5 +1,6 @@
 h2 {
-    margin-top: 3rem;
+    font-size: clamp(1rem, 2.0vw, 2rem);
+    margin: 3rem 2rem;
 }
 
 #choose-gen {
@@ -35,31 +36,31 @@ h2,
     height: auto;
 }
 
-/**********Laptops********/
-@media (min-width: 960px) and (max-width: 1200px) {
-    #choose-gen {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 /**********Tablets********/
 @media (min-width: 500px) and (max-width: 959px) {
     #choose-gen {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        justify-items: center;
+        align-items: center
     }
 
     .card{
-        width: 40%;
+        width: 80%;
         height: auto;
     }
 }
 
+/**********Phones********/
 @media (max-width: 499px) {
     #choose-gen {
-            display: grid;
-            grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center
+    }
+
+    .card {
+        width: 60%;
+        height: auto;
     }
 }

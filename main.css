@@ -57,12 +57,13 @@ footer {
 /**********Tablets********/
 @media (min-width: 500px) and (max-width: 959px) {
     #heading {
-        width: 20rem;
+        width: 27rem;
     }
 }
 
+/**********Phones********/
 @media (max-width: 499px) {
     #heading {
-        width: 15rem;
+        width: 21rem;
     }
 }

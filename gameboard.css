@@ -170,7 +170,7 @@
 }
 
 /**********Laptops**********/
-@media (min-width: 960px) and (max-width: 1350px) {
+@media (min-width: 960px) and (max-width: 1200px) {
     #hangman-container {
         transform: scale(1.1);
         transform-origin: center;
