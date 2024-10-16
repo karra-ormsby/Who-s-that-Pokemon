@@ -22,10 +22,6 @@ h1 {
     height: 3rem;
 }
 
-#answer {
-    text-decoration: underline;
-}
-
 #play-again:hover {
     cursor: pointer;
     background-color: rgba(218, 223, 225, 0.8);

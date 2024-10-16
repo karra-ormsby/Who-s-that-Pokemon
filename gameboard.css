@@ -1,19 +1,11 @@
- #game-container {
-    display: grid;
-    grid-template-areas:
-        "letters hangman-container";
-    grid-template-columns: 1fr auto;
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    justify-items: center;
-}
-
-#game-board {
+#game-container {
     display: grid;
     grid-template-areas: "letters hangman-container";
     width: 90%;
     max-width: 1200px;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
 }
 
 #guessing-field {
@@ -56,7 +48,7 @@
 #hangman {
     position: relative;
     max-width: 100%;
-    top: -100px;
+    top: 150px;
     left: -80px;
 }
 
@@ -192,21 +184,16 @@
 /**********Tablets**********/
 @media (min-width: 500px) and (max-width: 959px) {
     #game-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-    }
-
-    #game-board {
         grid-template-areas:
         "hangman-container"
         "letters"
         "keyboard";
         grid-template-columns: 1fr;
+        margin: 0 auto;
     }
 
     #hangman-container {
-        margin-bottom: 5rem;
+        margin-bottom: 12rem;
         max-width: 100%;
         transform: scale(1);
         transform-origin: center;
@@ -227,16 +214,17 @@
 
 /**********Phones**********/
 @media (max-width: 499px) {
-    #game-board {
+    #game-container {
         grid-template-areas:
             "hangman-container"
             "letters"
             "keyboard";
         grid-template-columns: 1fr;
+        margin: 0 auto;
     }
 
     #hangman-container {
-        margin-bottom: 5rem;
+        margin-bottom: 8rem;
         max-width: 100%;
         transform: scale(0.8);
         transform-origin: center;
@@ -255,7 +243,6 @@
     #keyboard {
         grid-area: keyboard;
         display: block;
-        margin-top: 2rem;
     }
 
     .key {

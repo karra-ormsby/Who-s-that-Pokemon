@@ -8,7 +8,7 @@
     <title>Who's that Pokemon?</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./main.css" />
-    <link rel="stylesheet" href="./gameWin.css" />
+    <link rel="stylesheet" href="./playAgain.css" />
 </head>
 
 <body>
@@ -17,12 +17,14 @@
     </header>
 
     <main>
-        <img id="pokemon-sprite" src="" />
-        <audio autoplay>
-            <source id="pokemon-cry" src="" type="audio/ogg">
-            Your browser does not support the audio element.
-        </audio>
-        <h1>Congratulations you won!</h1>
+        <section id="pokemon">
+            <img id="pokemon-sprite" src="" />
+            <audio autoplay>
+                <source id="pokemon-cry" src="" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+        <h1 id="ending-message"></h1>
         <div id="play-again">Play Again?</div>
     </main>
 

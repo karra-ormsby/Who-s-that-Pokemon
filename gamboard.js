@@ -58,6 +58,7 @@ function chooseWord (userChoice) {
     console.log(id);
     console.log(userChoice)
     myWord = userChoice[randomNum].pokemon;
+    localStorage.setItem("myWord", myWord);
     console.log("random num:", randomNum);
     console.log("my word: ", myWord);
     const pokedexNum = userChoice[randomNum].pokedexNumber;
@@ -159,15 +160,17 @@ function wrongGuess() {
 //when the correct answer is reached, the function loads a new page which congratulates the user and offers them to play again
 function gameWin() {
     gameCompeted = true;
-    location.replace("./gameWin.html");
+    let gameWon = true;
+    localStorage.setItem("gameWon", JSON.stringify(gameWon));
+    location.replace("./playAgain.html");
 };
 
 //once max inccorect guesses is reached, the function loads a new page which tells the user the answeran offers to let the uer play again
 function gameLoss() {
     gameCompeted = true;
-    localStorage.setItem("myWord", myWord);
-    console.log("you lost");
-    location.replace("./gameLoss.html");
+    let gameWon = false;
+    localStorage.setItem("gameWon", JSON.stringify(gameWon));
+    location.replace("./playAgain.html");
 };
 
 function checkWordTouchScreen() {
