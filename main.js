@@ -512,7 +512,7 @@ const gen4 = [
     { pokedexNumber: 493, pokemon: "arceus" },
 ];
 
-// adds an event listener to all cards
+// adds an event listener to all generation cards
 function getUserChoice() {
   for (let i = 0; i < genCards.length; i++) {
     let gen = genCards[i];
@@ -529,7 +529,6 @@ function getGen(id) {
     switch(id) {
         case "gen1":
             userChoice = gen1;
-            console.log(userChoice);
             loadGameBoard(userChoice, id);
             break;
         case "gen2":

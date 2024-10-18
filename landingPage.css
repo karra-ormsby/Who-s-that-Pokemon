@@ -1,6 +1,21 @@
+#welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#professor-oak {
+    margin: 2rem 0;
+    /* width: 8%; */
+    width: clamp(5rem, 5vw, 10rem);
+    height: auto;
+}
+
 h2 {
     font-size: clamp(1rem, 2.0vw, 2rem);
-    margin: 3rem 2rem;
+    /* margin: 3rem 2rem; */
+    width: 70%;
 }
 
 #choose-gen {
@@ -38,6 +53,11 @@ h2,
 
 /**********Tablets********/
 @media (min-width: 500px) and (max-width: 959px) {
+    /* #professor-oak {
+        width: 10%;
+        height: auto;
+    } */
+
     #choose-gen {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
@@ -53,6 +73,11 @@ h2,
 
 /**********Phones********/
 @media (max-width: 499px) {
+    /* #professor-oak {
+        width: 16%;
+        height: auto;
+    } */
+
     #choose-gen {
         grid-template-columns: 1fr;
         justify-items: center;

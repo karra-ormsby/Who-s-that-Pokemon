@@ -22,6 +22,7 @@ let incorrectGuess;
 let incorrectGuessArray = [];
 let gameCompeted;
 
+//the rows of keys on the keyboard
 const rows = [
         ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
@@ -30,18 +31,22 @@ const rows = [
     ];
 
 // adds and event listener to each key on the keyboard    
-rows.forEach(row => {
-        const rowDiv = document.createElement('div');
-        rowDiv.classList.add('row');
-        row.forEach(key => {
-            const keyDiv = document.createElement('div');
-            keyDiv.classList.add('key');
-            keyDiv.textContent = key;
-            keyDiv.addEventListener('click', () => checkWord());
-            rowDiv.appendChild(keyDiv);
+rows.forEach(function(row) {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
+    //adds an event listener to each key on the keyboard
+    row.forEach(function(key) {
+        const keyDiv = document.createElement('div');
+        keyDiv.classList.add('key');
+        keyDiv.textContent = key;
+        keyDiv.addEventListener('click', function() {
+            checkWord();
         });
-        keyboardDiv.appendChild(rowDiv);
+        rowDiv.appendChild(keyDiv);
     });
+    keyboardDiv.appendChild(rowDiv);
+});
+
 
 //funtion that is called when the page loads to 'set up' the game
 function startGame(userChoice) {
@@ -52,17 +57,13 @@ function startGame(userChoice) {
     renderBlanks();
 };
 
-//chooses a random number from 1 to lengnth of array of possible words
+//chooses a random number from 1 to length of array of possible words
 function chooseWord (userChoice) {
     const randomNum = Math.floor(Math.random() * userChoice.length);
-    console.log(id);
-    console.log(userChoice)
     myWord = userChoice[randomNum].pokemon;
     localStorage.setItem("myWord", myWord);
-    console.log("random num:", randomNum);
     console.log("my word: ", myWord);
     const pokedexNum = userChoice[randomNum].pokedexNumber;
-    console.log("pokedexNum:", pokedexNum);
     localStorage.setItem("pokedexNum", pokedexNum);
 };
 
@@ -105,7 +106,6 @@ function checkWord() {
         if (!correctGuess) {
             if (!incorrectGuessArray.includes(letter)) {
                 incorrectGuessArray.push(letter);
-                console.log(incorrectGuessArray);
                 wrongLetters.textContent = incorrectGuessArray.join(" ");
                 incorrectGuess ++;
                 wrongGuess();
@@ -165,40 +165,13 @@ function gameWin() {
     location.replace("./playAgain.html");
 };
 
-//once max inccorect guesses is reached, the function loads a new page which tells the user the answeran offers to let the uer play again
+//once max incorrect guesses is reached, the function loads a new page which tells the user the answer and offers to let the uer play again
 function gameLoss() {
     gameCompeted = true;
     let gameWon = false;
     localStorage.setItem("gameWon", JSON.stringify(gameWon));
     location.replace("./playAgain.html");
 };
-
-function checkWordTouchScreen() {
-    const inputValue = userInput.value;
-    console.log("Current input: ", inputValue);
-    if(!gameCompeted) {
-        const letter = event.key;
-        let correctGuess = false;
-
-        for(let i = 0; i < myWord.length; i++) {
-            if (myWord[i] === letter) {
-                correctGuess = true;
-                blankArray[i] = letter;
-                guessingField.textContent =  blankArray.join(" ");
-            }
-        }
-        if (!correctGuess) {
-            incorrectGuess ++;
-            wrongGuess();
-        } else {
-            const blankword = blankArray.join("");
-            if (blankword === myWord) {
-                gameWin();
-            }
-        }
-    }
-}
-
 
 document.addEventListener("keypress", checkWord);
 

@@ -209,14 +209,14 @@
     }
 
     #hangman {
-        top: 150px;
+        top: 200px;
         left: -90px;
     }
 
     #keyboard {
         grid-area: keyboard;
         display: block;
-        margin-top: 0;
+        margin-top: -5rem;
     }
 }
 
