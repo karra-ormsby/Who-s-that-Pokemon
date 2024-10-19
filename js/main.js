@@ -936,7 +936,7 @@ const gen8 = [
     { pokedexNumber: 905, pokemon: "enamorus" },
 ];
 
-// adds an event listener to all generation cards
+//adds an event listener to all generation cards
 function getUserChoice() {
   for (let i = 0; i < genCards.length; i++) {
     let gen = genCards[i];

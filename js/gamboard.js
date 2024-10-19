@@ -29,11 +29,11 @@ const rows = [
         ['z', 'x', 'c', 'v', 'b', 'n', 'm']
     ];
 
-// adds and event listener to each key on the keyboard    
+//adds and event listener to each key on the keyboard    
 rows.forEach(function(row) {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
-    //adds an event listener to each key on the keyboard
+    //for each key on the keyboard, attached an event listener to it
     row.forEach(function(key) {
         const keyDiv = document.createElement('div');
         keyDiv.classList.add('key');
@@ -56,12 +56,11 @@ function startGame(userChoice) {
     renderBlanks();
 };
 
-//chooses a random number from 1 to length of array of possible words
+//chooses a random number from 1 to length of array of possible words. Saves the chosen word and the pokedex number into local storage to be used on a different page
 function chooseWord (userChoice) {
     const randomNum = Math.floor(Math.random() * userChoice.length);
     myWord = userChoice[randomNum].pokemon;
     localStorage.setItem("myWord", myWord);
-    console.log("my word: ", myWord);
     const pokedexNum = userChoice[randomNum].pokedexNumber;
     localStorage.setItem("pokedexNum", pokedexNum);
 };
@@ -71,9 +70,11 @@ function chooseWord (userChoice) {
 function renderBlanks() {
     for (let i = 0; i < myWord.length; i++) {
         //check if the character is a letter or number using regex
+        //if it is then replace it with a blankn
         if (/[a-zA-Z0-9]/.test(myWord[i])) {
             blankArray[i] = "_";
         } else {
+            //if not, then don't replace it and just display that character to the user
             blankArray[i] = myWord[i];
         }
     }

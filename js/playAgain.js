@@ -8,6 +8,7 @@ async function getPokemonData(pokedexNum) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokedexNum}/`);
         
+        //lets us know if the api was found or not
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
