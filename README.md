@@ -20,8 +20,15 @@ The user can then click the ‘Play Again’ button to start the game again.
 
 ## Images
 
+![landing page](./images/landingPage.png)
+![gameboard](./images/gamboard.png)
+![gameboard wrong guess](./images/gamboardWrongGuess.png)
+![game win](./images/Win.png)
+![game loss](./images/Loss.png)
 
 
 ## Credits
 
-Thanks to David Johnston for helping with the keyboaard on touch screen devices and for find the Pokémon API used for sprites and cries.
+Thanks to David Johnston from General Assembly for helping with the keyboaard on touch screen devices and for find the Pokémon API used for sprites and cries.
+
+Pokémon starter image from victor on Pintrest.

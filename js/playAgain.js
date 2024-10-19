@@ -17,6 +17,7 @@ async function getPokemonData(pokedexNum) {
         //displays the pokemon sprite to the page
         const pokemonSprite = document.querySelector("#pokemon-sprite");
         pokemonSprite.setAttribute("src", frontSprite);
+        pokemonSprite.setAttribute("alt", myWord);
         //loads the pokemon cry to the page
         const pokemonCry = document.querySelector("#pokemon-cry");
         pokemonCry.setAttribute("src", latestCry);

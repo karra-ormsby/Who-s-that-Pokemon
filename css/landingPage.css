@@ -7,14 +7,12 @@
 
 #professor-oak {
     margin: 2rem 0;
-    /* width: 8%; */
     width: clamp(5rem, 5vw, 10rem);
     height: auto;
 }
 
 h2 {
     font-size: clamp(1rem, 2.0vw, 2rem);
-    /* margin: 3rem 2rem; */
     width: 70%;
 }
 
