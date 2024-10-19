@@ -1,5 +1,4 @@
 const userChoice = JSON.parse(localStorage.getItem("userChoice"));
-const id = localStorage.getItem("id");
 const guessingField = document.querySelector("#guessing-field");
 const hangMan = document.querySelector("#hangman");
 const topRail = document.querySelector("#top-rail");
@@ -70,13 +69,19 @@ function chooseWord (userChoice) {
 //turn myWord into an array of blanks that will be displayed as the 'word' to the user
 //then display the array as a string to the user
 function renderBlanks() {
-    for(let i = 0; i < myWord.length; i++) {
-        blankArray[i] = "_";
-    };
+    for (let i = 0; i < myWord.length; i++) {
+        //check if the character is a letter or number using regex
+        if (/[a-zA-Z0-9]/.test(myWord[i])) {
+            blankArray[i] = "_";
+        } else {
+            blankArray[i] = myWord[i];
+        }
+    }
 
-    blankWord = blankArray.join(" ");
+    blankWord = blankArray.join("");
     guessingField.textContent = blankWord;
-};
+}
+
 
 //checks the letter guessed by the user against the selected word
 //if the correct letter is gussed it will replace the '_' at it's loaction and be rendered to the document
@@ -99,9 +104,10 @@ function checkWord() {
             if (myWord[i] === letter) {
                 correctGuess = true;
                 blankArray[i] = letter;
-                guessingField.textContent =  blankArray.join(" ");
             }
         }
+        guessingField.textContent = blankArray.join("");
+
         //checks if the incorrectly guessed letter has been guessed before. If it hasn't it will be added to the incorrectGuessArray and the incorrect guesses will be incremented
         if (!correctGuess) {
             if (!incorrectGuessArray.includes(letter)) {
