@@ -1,3 +1,4 @@
+const home = document.querySelector("#home");
 const message = document.querySelector("#ending-message");
 const playAgainBtn = document.querySelector("#play-again");
 const myWord = localStorage.getItem("myWord");
@@ -22,10 +23,6 @@ async function getPokemonData(pokedexNum) {
         //loads the pokemon cry to the page
         const pokemonCry = document.querySelector("#pokemon-cry");
         pokemonCry.setAttribute("src", latestCry);
-        const audioElement = document.querySelector("audio");
-        //play the pokemon cry
-        audioElement.load();
-        audioElement.play();
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
@@ -38,6 +35,13 @@ if (gameWon) {
 } else {
     message.textContent = `You loose. The answer was ${myWord}!`;
 }
+
+function goHome() {
+    localStorage.clear();
+    location.replace("./index.html");
+};
+
+home.addEventListener("click", goHome);
 
 function playAgain() {
     localStorage.clear();

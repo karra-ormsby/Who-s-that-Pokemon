@@ -27,6 +27,18 @@ header {
     justify-content: center;
 }
 
+#home {
+    color: var(--background-color);
+    font-size: clamp(1.5rem, 2.5vw, 2.7rem);;
+    justify-content: center;
+    align-self: center;
+    margin-left: 1rem;
+}
+
+#home:hover {
+    cursor: pointer;
+}
+
 #heading {
     width: 40rem;
     height: auto;
@@ -64,6 +76,6 @@ footer {
 /**********Phones********/
 @media (max-width: 499px) {
     #heading {
-        width: 21rem;
+        width: 18rem;
     }
 }

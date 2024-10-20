@@ -943,7 +943,9 @@ function getUserChoice() {
     let genId = gen.id;
 
     gen.addEventListener("click", function () {
-      getGen(genId);
+        const genText = gen.querySelector('p').textContent;
+        localStorage.setItem("genText", genText);
+        getGen(genId);
     });
   };
 };
@@ -987,7 +989,7 @@ function getGen(id) {
 };
 
 //loads the gameboard page passing in the users choice of array of words to pick from
-function loadGameBoard(userChoice) {
+function loadGameBoard(userChoice, id) {
   localStorage.setItem("userChoice", JSON.stringify(userChoice));
   location.replace("./gameboard.html");
 };

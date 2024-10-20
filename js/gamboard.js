@@ -1,4 +1,7 @@
 const userChoice = JSON.parse(localStorage.getItem("userChoice"));
+const genText = localStorage.getItem("genText");
+const home = document.querySelector("#home");
+const genPicked = document.querySelector("#gen-picked");
 const guessingField = document.querySelector("#guessing-field");
 const hangMan = document.querySelector("#hangman");
 const topRail = document.querySelector("#top-rail");
@@ -46,9 +49,17 @@ rows.forEach(function(row) {
     keyboardDiv.appendChild(rowDiv);
 });
 
+function goHome() {
+    localStorage.clear();
+    location.replace("./index.html");
+};
+
+home.addEventListener("click", goHome);
+
 
 //funtion that is called when the page loads to 'set up' the game
 function startGame(userChoice) {
+    genPicked.innerHTML = genText;
     incorrectGuess = 0;
     blankArray = [];
     gameCompeted = false;

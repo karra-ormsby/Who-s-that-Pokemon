@@ -1,6 +1,13 @@
+#gen-picked {
+    font-family: "Press Start 2P", system-ui;
+    font-size: clamp(1rem, 2.5vw, 1.7rem);
+    text-align: center;
+    margin-top: 2rem;
+}
+
 #game-container {
     display: grid;
-    grid-template-areas: "letters hangman-container";
+    grid-template-areas: "guess-tracker hangman-container";
     width: 90%;
     max-width: 1200px;
     height: 100vh;
@@ -36,8 +43,8 @@
     transform-origin: center;
 }
 
-#letters {
-    grid-area: letters;
+#guess-tracker {
+    grid-area: guess-tracker;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -190,7 +197,7 @@
     #game-container {
         grid-template-areas:
         "hangman-container"
-        "letters"
+        "guess-tracker"
         "keyboard";
         grid-template-columns: 1fr;
         margin: 0 auto;
@@ -225,7 +232,7 @@
     #game-container {
         grid-template-areas:
             "hangman-container"
-            "letters"
+            "guess-tracker"
             "keyboard";
         grid-template-columns: 1fr;
         margin: 0 auto;
