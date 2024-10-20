@@ -39,7 +39,7 @@
     max-width: 30vw;
     min-width: 150px;
     margin-left: 2rem;
-    transform: scale(1.4);
+    transform: scale(1.25);
     transform-origin: center;
 }
 
@@ -178,10 +178,10 @@
 
 /**********Laptops**********/
 @media (min-width: 960px) and (max-width: 1450px) {
-    #hangman-container {
+    /* #hangman-container {
         transform: scale(1.25);
         transform-origin: center;
-    }
+    } */
 
     #guessing-field {
         font-size: 1.9rem;
