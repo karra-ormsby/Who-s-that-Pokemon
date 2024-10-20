@@ -52,11 +52,6 @@ h2,
 
 /**********Tablets********/
 @media (min-width: 500px) and (max-width: 959px) {
-    /* #professor-oak {
-        width: 10%;
-        height: auto;
-    } */
-
     #choose-gen {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
@@ -72,11 +67,6 @@ h2,
 
 /**********Phones********/
 @media (max-width: 499px) {
-    /* #professor-oak {
-        width: 16%;
-        height: auto;
-    } */
-
     #choose-gen {
         grid-template-columns: 1fr;
         justify-items: center;

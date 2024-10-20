@@ -36,6 +36,7 @@ if (gameWon) {
     message.textContent = `You loose. The answer was ${myWord}!`;
 }
 
+//when the user clicks the home button the local storage is cleared and the user goes back to the landing page
 function goHome() {
     localStorage.clear();
     location.replace("./index.html");
@@ -43,6 +44,7 @@ function goHome() {
 
 home.addEventListener("click", goHome);
 
+//when the user clicks the 'play again' button the local storage is cleared and the user goes back to the landing page
 function playAgain() {
     localStorage.clear();
     location.replace("./index.html");

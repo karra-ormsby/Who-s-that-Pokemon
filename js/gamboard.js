@@ -49,6 +49,7 @@ rows.forEach(function(row) {
     keyboardDiv.appendChild(rowDiv);
 });
 
+//when the user clicks the home button the local storage is cleared and the user goes back to the landing page
 function goHome() {
     localStorage.clear();
     location.replace("./index.html");
