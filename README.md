@@ -23,8 +23,8 @@ The user can then click the ‘Play Again’ button to start the game again.
 ![landing page](./images/landingPage.png)
 ![gameboard](./images/gameboard.png)
 ![gameboard wrong guess](./images/gameboardWrongGuess.png)
-![game win](./images/win.png)
 ![game loss](./images/loss.png)
+![game win](./images/win.png)
 
 
 ## Credits
